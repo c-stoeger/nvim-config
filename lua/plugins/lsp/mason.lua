@@ -1,7 +1,7 @@
 return {
     "williamboman/mason.nvim",
     dependencies = {
-        "williamboman/mason-lspconfig.nvim"
+        "williamboman/mason-lspconfig.nvim",
     },
     config = function()
         local mason = require("mason")
@@ -13,17 +13,19 @@ return {
                     package_installed = "✓",
                     package_pending = "➜",
                     package_uninstalled = "✗",
-                }
-            }
+                },
+            },
         })
 
         mason_lspconfig.setup({
             ensure_installed = {
                 "clangd",
-                "lua_ls"
+                "lua_ls",
+                "ruff_lsp",
+                "pyright",
             },
             -- auto-install configured servers (with lspconfig)
-            automatic_installation = true
+            automatic_installation = true,
         })
-    end
+    end,
 }

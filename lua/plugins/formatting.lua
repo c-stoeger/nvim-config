@@ -13,7 +13,7 @@ return {
                 html = { "prettier" },
                 markdown = { "prettier" },
                 css = { "prettier" },
-                python = { "isort", "black" },
+                python = { "ruff" },
             },
             format_on_save = {
                 lsp_fallback = true,

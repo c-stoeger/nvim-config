@@ -3,12 +3,15 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",
-        { "antosha417/nvim-lsp-file-operations", config = true }
+        { "antosha417/nvim-lsp-file-operations", config = true },
     },
     config = function()
         local lspconfig = require("lspconfig")
 
         local cmp_nvim_lsp = require("cmp_nvim_lsp")
+
+        -- uncomment following line for lsp logging
+        -- vim.lsp.set_log_level("debug")
 
         local keymap = vim.keymap
 
@@ -80,19 +83,44 @@ return {
                     workspace = {
                         library = {
                             [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                            [vim.fn.stdpath("config") .. "/lua"] = true
-                        }
-                    }
-                }
-            }
+                            [vim.fn.stdpath("config") .. "/lua"] = true,
+                        },
+                    },
+                },
+            },
         })
 
         -- configure c++ autocompletion
         lspconfig["clangd"].setup({
             capabilities = capabilities,
-            on_attach = on_attach
+            on_attach = on_attach,
         })
 
-    end
+        -- configure python linting
+        lspconfig["ruff_lsp"].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            init_options = {
+                settings = {
+                    -- Extra CLI arguments to ruff:
+                    args = {},
+                },
+            },
+        })
 
+        -- configure python autocompletion
+        lspconfig["pyright"].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            settings = {
+                python = {
+                    analysis = {
+                        autoSearchPaths = true,
+                        useLibraryCodeForTypes = true,
+                        diagnosticMode = "workspace",
+                    },
+                },
+            },
+        })
+    end,
 }

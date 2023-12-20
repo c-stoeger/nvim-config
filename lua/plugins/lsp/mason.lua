@@ -25,6 +25,7 @@ return {
                 "lua_ls",
                 "ruff_lsp",
                 "pyright",
+                "neocmake",
             },
             -- auto-install configured servers (with lspconfig)
             automatic_installation = true,

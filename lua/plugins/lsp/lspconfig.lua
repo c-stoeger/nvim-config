@@ -128,5 +128,17 @@ return {
             capabilities = capabilities,
             on_attach = on_attach,
         })
+
+        -- configure json, js, ts autocompletion
+        lspconfig["biome"].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+        })
+
+        -- configure nix autocompletion
+        -- lspconfig["nil_ls"].setup({
+        --     capabilities = capabilities,
+        --     on_attach = on_attach,
+        -- })
     end,
 }

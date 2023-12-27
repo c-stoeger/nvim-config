@@ -6,7 +6,7 @@ return {
     config = function()
         local tasks = require("tasks")
         tasks.setup({
-            params_file = "cmake.json",
+            params_file = ".cmake.json",
         })
 
         -- set keymaps

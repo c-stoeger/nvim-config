@@ -10,6 +10,8 @@ return {
         lint.linters_by_ft = {
             -- cpp = { "cppcheck", "cpplint", "clang-tidy" },
             -- cpp = { "clangtidy" },
+            -- json = { "biomejs" },
+            yaml = { "yamllint" },
         }
 
         local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

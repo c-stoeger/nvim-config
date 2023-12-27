@@ -26,6 +26,8 @@ return {
                 "ruff_lsp",
                 "pyright",
                 "neocmake",
+                "biome",
+                -- "nil_ls",
             },
             -- auto-install configured servers (with lspconfig)
             automatic_installation = true,

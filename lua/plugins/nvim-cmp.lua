@@ -8,6 +8,7 @@ return {
         "saadparwaiz1/cmp_luasnip", -- for autocompletion
         "rafamadriz/friendly-snippets", -- useful snippets
         "onsails/lspkind.nvim", -- vs-code like pictograms
+        "hrsh7th/cmp-nvim-lsp-signature-help",
     },
     config = function()
         local has_words_before = function()
@@ -69,11 +70,12 @@ return {
                 ["<C-f>"] = cmp.mapping.scroll_docs(4),
                 ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
                 ["<C-e>"] = cmp.mapping.abort(), -- close completion window
-                ["<CR>"] = cmp.mapping.confirm({ select = false }),
+                ["<CR>"] = cmp.mapping.confirm({ select = true }),
             }),
             -- sources for autocompletion
             sources = cmp.config.sources({
                 { name = "nvim_lsp" },
+                { name = "nvim_lsp_signature_help" },
                 { name = "luasnip" }, -- snippets
                 { name = "buffer" }, -- text within current buffer
                 { name = "path" }, -- file system paths

@@ -4,7 +4,7 @@ return {
     dependencies = {
         "nvim-lua/plenary.nvim",
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-        "nvim-tree/nvim-web-devicons"
+        "nvim-tree/nvim-web-devicons",
     },
     config = function()
         local telescope = require("telescope")
@@ -16,10 +16,10 @@ return {
                     i = {
                         ["<C-k>"] = actions.move_selection_previous,
                         ["<C-j>"] = actions.move_selection_next,
-                        ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist
-                    }
-                }
-            }
+                        ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
+                    },
+                },
+            },
         })
 
         telescope.load_extension("fzf")
@@ -31,5 +31,6 @@ return {
         keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
         keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
         keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
-    end
+        keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Show buffers" })
+    end,
 }
